@@ -1,8 +1,12 @@
   <aside>
-    <% if product.image.present? %>
-      <p><%= image_tag product.image.variant(resize_to_limit: [285, 285]).processed  %></p>
+    <%= form_with url: cart_index_path, method: :post do %>
+      <% if product.image.present? %>
+        <p><%= image_tag product.image.variant(resize_to_limit: [285, 285]).processed  %></p>
+      <% end %>
+      <h3><%= link_to product.name, product %></h3>
+      <p>Price: <%= number_to_currency product.price_cents / 100.0 %></p>
+      <p><%= product.description %></p>
+      <%= hidden_field_tag(:id,product.id) %>
+      <%= button_tag 'Add to cart ✅' %>
     <% end %>
-    <h3><%= link_to product.name, product %></h3>
-    <p>Price: <%= number_to_currency product.price_cents / 100.0 %></p>
-    <p><%= product.description %></p>
   </aside>
