@@ -14,8 +14,15 @@
     <header>
       <h1>Buy Our Stuff</h1>
       <h3>Make Us Rich</h3>
-      <%= debug cart%>
+      <nav>
+      <%= debug session[:shopping_cart] %>
+</nav>
 
+    <% if flash[:notice] %>
+      <p>
+        <%= flash[:notice]%>
+      </p>
+    <% end %>
 
     </header>
     <main>
